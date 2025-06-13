@@ -41,6 +41,8 @@ services:
   flink-jobmanager:
     build:
       context: .
+      dockerfile: Dockerfile
+    image: my-flink:latest
     container_name: flink-jobmanager
     ports:
       - "8081:8081"
@@ -49,8 +51,7 @@ services:
     command: jobmanager
           
   flink-taskmanager:
-    build:
-      context: .
+    image: my-flink:latest
     container_name: flink-taskmanager
     depends_on:
       - flink-jobmanager
