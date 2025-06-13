@@ -13,3 +13,10 @@
   - kafkacat
   - Linux tools: nano / less / gzip / zip / unzip
   - JARs do Flink para: Connectors e Formats
+
+---
+
+## Uso
+    git clone https://github.com/fahadkalil/bigdata_docker.git
+    cd bigdata_docker
+    docker-compose up
