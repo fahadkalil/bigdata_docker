@@ -9,6 +9,7 @@ RUN set -ex; \
   apt-get -y install python3-pip; \
   apt-get -y install python3-dev; \
   apt-get -y install kafkacat; \
+  apt-get -y install netcat-traditional; \
   apt-get -y install nano; \
   apt-get -y install less; \
   apt-get -y install gzip; \
