@@ -47,7 +47,9 @@ services:
     ports:
       - "8081:8081"
     environment:
-      JOB_MANAGER_RPC_ADDRESS: flink-jobmanager
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: flink-jobmanager
     command: jobmanager
           
   flink-taskmanager:
@@ -57,15 +59,12 @@ services:
       - flink-jobmanager
     command: taskmanager
     environment:
-      JOB_MANAGER_RPC_ADDRESS: flink-jobmanager
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: flink-jobmanager
+        taskmanager.numberOfTaskSlots: 16
 
-  # kcat:
-    # image: confluentinc/cp-kcat:latest
-    # container_name: bigdata-kcat
-    # command: sleep infinity
-    # depends_on: 
-      # - kafka
-      
+# Uncomment the following section if you want to use PostgreSQL 17     
   # postgres:
     # image: postgres:17
     # container_name: bigdata-postgres    
