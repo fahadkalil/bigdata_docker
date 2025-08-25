@@ -26,4 +26,4 @@ WORKDIR /opt/flink
 COPY --chown=flink:flink ./connectors/*.jar ./lib
 COPY --chown=flink:flink ./formats/*.jar ./lib
 
-EXPOSE 2181 9092 8080 8081
+EXPOSE 8081
