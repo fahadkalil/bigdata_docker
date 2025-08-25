@@ -1,4 +1,4 @@
-services:
+services:  
   zookeeper:
     image: bitnami/zookeeper:3.8
     container_name: zookeeper
@@ -39,6 +39,19 @@ services:
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbit
+      RABBITMQ_DEFAULT_PASS: rabbit    
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    restart: always
+
   flink-jobmanager:
     build:
       context: .
@@ -65,6 +78,9 @@ services:
         jobmanager.rpc.address: flink-jobmanager
         taskmanager.numberOfTaskSlots: 16
 
+volumes:
+  rabbitmq_data: # Define the named volume
+    driver: local # Use the local driver for persistent storage on the host
 # Uncomment the following section if you want to use PostgreSQL 17     
   # postgres:
     # image: postgres:17
