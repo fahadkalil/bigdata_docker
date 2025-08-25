@@ -4,7 +4,7 @@ Nesse exemplo temos um pipeline (job) com duas filas (queues) no RabbitMQ, sendo
 
 É feito uso da classe de Serialização/Deserialização *SimpleStringSchema* para troca simples de mensagens.
 
-Duas filas deverão estar definidas no RabbitMQ. Para isso, pode-se utilizar a UI (http://localhost:15672) e as credenciais *rabbit* (username) e *rabbit* (password).
+Duas filas deverão estar definidas no RabbitMQ. Para isso, pode-se utilizar o RabbitMQ Management UI (http://localhost:15672) e as credenciais *rabbit* (username) e *rabbit* (password).
 
 A criação das filas é feita na aba '*Queues and Streams*' na opção '*Add a new queue*'.
 
@@ -25,3 +25,7 @@ Agora execute o(s) seguinte(s) comando(s) para incluir o arquivo '*rabbit.py*' n
 
     cd && wget https://raw.githubusercontent.com/fahadkalil/bigdata_docker/refs/heads/main/examples/rabbit.py -O rabbit.py
     python rabbit.py
+
+## Testando
+
+No RabbitMQ Management UI, publique uma mensagem na fila '*fila01_source*' e depois verifique se esta foi encaminhada para a fila '*fila01_sink*'.
