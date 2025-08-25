@@ -2,7 +2,7 @@ FROM flink:1.20.0
 
 LABEL org.opencontainers.image.authors="Fahad Kalil <fahadkalil@gmail.com>"
 
-# Install python + kcat
+# Install python + other Linux tools
 RUN set -ex; \
   apt-get update; \
   apt-get -y install python3; \
