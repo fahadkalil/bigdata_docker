@@ -26,6 +26,10 @@ Agora execute o(s) seguinte(s) comando(s) para incluir o arquivo '*rabbit.py*' n
     cd && wget https://raw.githubusercontent.com/fahadkalil/bigdata_docker/refs/heads/main/examples/rabbit.py -O rabbit.py
     /opt/flink/bin/flink run -py rabbit.py
 
+## Verifique se o job está rodando (*running*) no Apache Flink
+
+Acesse o Dashboard: <http://localhost:8081/#/overview>
+
 ## Testando
 
 No RabbitMQ Management UI, publique uma mensagem na fila '*fila01_source*' e depois verifique se esta foi encaminhada para a fila '*fila01_sink*'.
