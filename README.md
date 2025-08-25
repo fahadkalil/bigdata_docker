@@ -23,9 +23,9 @@
 
     git clone https://github.com/fahadkalil/bigdata_docker.git
     cd bigdata_docker
-    docker-compose up
+    docker-compose up -d --pull=always
 
 ## Atualizando imagens e containers
 
-    docker-compose pull
-    docker-compose up -d
+    docker compose up -d --pull=always
+    
