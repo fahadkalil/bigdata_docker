@@ -65,7 +65,7 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: flink-jobmanager
     command: jobmanager
-          
+  
   flink-taskmanager:
     image: my-flink:latest
     container_name: flink-taskmanager
@@ -79,8 +79,8 @@ services:
         taskmanager.numberOfTaskSlots: 16
 
 volumes:
-  rabbitmq_data: # Define the named volume
-    driver: local # Use the local driver for persistent storage on the host
+  rabbitmq_data:
+
 # Uncomment the following section if you want to use PostgreSQL 17     
   # postgres:
     # image: postgres:17

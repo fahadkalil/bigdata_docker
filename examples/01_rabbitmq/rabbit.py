@@ -8,7 +8,7 @@ env = StreamExecutionEnvironment.get_execution_environment()
 
 # Create an RMQConnectionConfig instance using the Builder pattern
 connection_config = RMQConnectionConfig.Builder() \
-    .set_host("localhost") \
+    .set_host("rabbitmq") \
     .set_port(5672) \
     .set_virtual_host("/") \
     .set_user_name("rabbit") \

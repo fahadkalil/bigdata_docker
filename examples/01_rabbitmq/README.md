@@ -24,7 +24,7 @@ Acesse o container 'flink-jobmanager' usando o comando em um terminal:
 Agora execute o(s) seguinte(s) comando(s) para incluir o arquivo '*rabbit.py*' no container e executar o *job*:
 
     cd && wget https://raw.githubusercontent.com/fahadkalil/bigdata_docker/refs/heads/main/examples/rabbit.py -O rabbit.py
-    python rabbit.py
+    /opt/flink/bin/flink run -py rabbit.py
 
 ## Testando
 
