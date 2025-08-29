@@ -78,6 +78,16 @@ services:
         jobmanager.rpc.address: flink-jobmanager
         taskmanager.numberOfTaskSlots: 16
 
+  mongo:
+    image: mongodb/mongodb-community-server:7.0.8-ubi9
+    container_name: mongo
+    command: --replSet rs0 --smallfiles --oplogSize 128
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+
 volumes:
   rabbitmq_data:
 
