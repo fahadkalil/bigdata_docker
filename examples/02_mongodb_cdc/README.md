@@ -4,11 +4,12 @@
 
     URL INSTÂNCIA (Single-node): mongodb://localhost:27017/?replicaSet=rs0
 
-## Verifique se o container foi inicializado e abra um terminal vinculado a ele
+## Verifique se o container foi inicializado e abra um terminal vinculado a ele usando o comando
 
-No terminal digite os comandos:
+    docker exec -it mongo /bin/bash
 
-    bash
+Acesse o shell do mongodb:
+
     mongosh
 
 ## Agora, dentro do shell do mongodb (mongosh), digite a sequencia de comandos
@@ -82,6 +83,12 @@ Agora execute o(s) seguinte(s) comando(s):
     cd /opt/flink/lib && wget https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-mongodb-cdc/3.2.0/flink-sql-connector-mongodb-cdc-3.2.0.jar
 
 ## Comandos no FlinkSQL
+
+Acesse o cliente SQL usando o comando
+
+    sql-client.sh
+
+Agora dentro do shell (FLINK SQL), execute:
 
     SET execution.checkpointing.interval = 3s;
 
