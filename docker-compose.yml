@@ -79,17 +79,26 @@ services:
         taskmanager.numberOfTaskSlots: 16
 
   mongo:
-    image: mongodb/mongodb-community-server:7.0.8-ubi9
+    image: mongo:7.0
     container_name: mongo
-    command: --replSet rs0 --smallfiles --oplogSize 128
+    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
     ports:
       - "27017:27017"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=mongo
-      - MONGO_INITDB_ROOT_PASSWORD=mongo
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'host.docker.internal:27017'}]}) }" | mongosh --port 27017 --quiet
+      interval: 5s
+      timeout: 30s
+      start_period: 0s
+      start_interval: 1s
+      retries: 30
+    volumes:
+      - "mongo_data:/data/db"
+      - "mongo_config:/data/configdb"
 
 volumes:
   rabbitmq_data:
+  mongo_data:
+  mongo_config:
 
 # Uncomment the following section if you want to use PostgreSQL 17     
   # postgres:
