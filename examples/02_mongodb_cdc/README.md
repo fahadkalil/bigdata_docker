@@ -153,6 +153,35 @@ E por fim, definir o *sink* (ou seja, o destino):
             o.product,
             o.order_status,
             c.name,
-            c. address
+            c.address
     FROM orders AS o
     LEFT JOIN customers AS c ON o.customer_id = c.customer_id;
+
+## Comandos no MongoDB (mongosh)
+
+    db.orders.insert({ 
+    order_id: 104, 
+    order_date: ISODate("2020-07-30T12:00:30.001Z"),
+    customer_id: 1004,
+    price: NumberDecimal("25.25"),
+    product: { 
+        name: 'rocks',
+        description: 'box of assorted rocks'
+    },
+    order_status: false
+    });
+
+    db.customers.insert({ 
+    customer_id: 1004,
+    name: 'Jacob', 
+    address: 'Shanghai' 
+    });
+
+    db.orders.updateOne(
+    { order_id: 104 },
+    { $set: { order_status: true } }
+    );
+
+    db.orders.deleteOne(
+    { order_id : 104 }
+    );
