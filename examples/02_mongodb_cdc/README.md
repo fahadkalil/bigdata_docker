@@ -123,3 +123,36 @@ Agora dentro do shell (FLINK SQL), execute:
     'database' = 'mgdb',
     'collection' = 'customers'
     );
+
+Vamos definir a tabela que agrega dados
+
+    CREATE TABLE agg_orders (
+    order_id INT,
+    order_date TIMESTAMP_LTZ(3),
+    customer_id INT,
+    price DECIMAL(10, 5),
+    product ROW<name STRING, description STRING>,
+    order_status BOOLEAN,
+    customer_name STRING,
+    customer_address STRING,
+    PRIMARY KEY (order_id) NOT ENFORCED
+    ) WITH (
+    'connector' = 'mongodb',
+    'uri' = 'mongodb://localhost:27017/?replicaSet=rs0',
+    'database' = 'mgdb',
+    'collection' = 'agg_orders'
+    );
+
+E por fim, definir o *sink* (ou seja, o destino):
+
+    INSERT INTO agg_orders
+    SELECT o.order_id,
+            o.order_date,
+            o.customer_id,
+            o.price,
+            o.product,
+            o.order_status,
+            c.name,
+            c. address
+    FROM orders AS o
+    LEFT JOIN customers AS c ON o.customer_id = c.customer_id;
