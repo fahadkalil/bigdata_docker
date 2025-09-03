@@ -13,7 +13,7 @@
     RabbitMQ               | rabbitmq  | 5672 (amqp)
     MongoDB                | mongo     | 27017
 
-## Dentro do container 'flink-jobmanager'
+### Dentro do container 'flink-jobmanager'
 
 - Python 3.11
 - pyflink 1.20.0
@@ -29,7 +29,7 @@
     cd bigdata_docker
     docker-compose up -d --pull=always
 
-## Atualizar repositório e images+containers do Docker
+## Atualizar repositório (bigdata_docker) e images+containers do Docker
     git pull
     docker compose up -d --pull=always
     
