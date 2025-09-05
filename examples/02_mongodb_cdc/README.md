@@ -9,6 +9,7 @@ O Flink CDC permite integração de dados em tempo real com baixa latência, tol
 <small>CDC significa Change Data Capture</small>
 
 <img src="https://yqintl.alicdn.com/d00b9167fac91ed2f5bf71832c74d62c8ccd5dbf.png" alt="Cenário Flink CDC"/>
+[Cenário Flink SQL](https://yqintl.alicdn.com/d00b9167fac91ed2f5bf71832c74d62c8ccd5dbf.png)
 
 ## Observações
 
