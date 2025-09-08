@@ -3,7 +3,7 @@
     Web User Interface     | Host      | Port
     -----------------------|-----------|-------------
     Flink Dashboard UI     | localhost | 8081
-    Kafka-UI               | localhost | 8080 (http)
+    Kafka-UI               | localhost | 8080  (http)
     RabbitMQ Management UI | localhost | 15672 (http)
     
     Service                | Host      | Port
