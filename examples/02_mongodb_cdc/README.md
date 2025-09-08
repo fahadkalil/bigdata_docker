@@ -2,14 +2,13 @@
 
 ## Descrição
 
-Nesse exemplo vamos explorar o uso do Flink CDC para monitorar alterações no MongoDB através do uso do FLINK SQL API.
+Nesse exemplo vamos explorar o uso do Flink CDC (*Change Data Capture*) para monitorar alterações no MongoDB através do uso do FLINK SQL API.
+
+![Flink CDC](https://github.com/user-attachments/assets/18b1ac2a-544d-4240-ab8e-0ca7d05cd798)
+
+*Fonte: https://www.alibabacloud.com/blog/understanding-flink-cdc-and-its-core-features_602059*
 
 O Flink CDC permite integração de dados em tempo real com baixa latência, tolerância a falhas e suporte para vários bancos de dados, simplificando fluxos de trabalho de dados modernos. Ainda, captura alterações de dados e alterações de esquema em tempo real, mantendo os pipelines atualizados.
-
-<small>CDC significa Change Data Capture</small>
-
-<img src="https://yqintl.alicdn.com/d00b9167fac91ed2f5bf71832c74d62c8ccd5dbf.png" alt="Cenário Flink CDC"/>
-[Cenário Flink SQL](https://yqintl.alicdn.com/d00b9167fac91ed2f5bf71832c74d62c8ccd5dbf.png)
 
 ## Observações
 
