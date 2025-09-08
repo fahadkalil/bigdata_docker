@@ -13,7 +13,10 @@
     RabbitMQ               | rabbitmq  | 5672 (amqp)
     MongoDB                | mongo     | 27017
 
-### Dentro do container 'flink-jobmanager'
+### Docker Image modificada do Apache Flink 1.20.0
+- https://hub.docker.com/r/fahadkalil/my-flink
+
+#### Dentro do container 'flink-jobmanager'
 
 - Python 3.11
 - pyflink 1.20.0
