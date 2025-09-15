@@ -1,4 +1,4 @@
-# Exemplo de uso: Apache Flink e RabbitMQ
+# Exemplo de uso: PyFlink e RabbitMQ
 
 Nesse exemplo temos um pipeline (job) com duas filas (queues) no RabbitMQ, sendo uma definida como Source e outra como Sink através do uso da biblioteca PyFlink python que usa a biblioteca PyFlink.
 

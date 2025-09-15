@@ -1,15 +1,22 @@
 # Multi Container Docker para Pipeline em Big Data
 
-## Service | Port
+    Web User Interface     | Host      | Port
+    -----------------------|-----------|-------------
+    Flink Dashboard UI     | localhost | 8081
+    Kafka-UI               | localhost | 8080  (http)
+    RabbitMQ Management UI | localhost | 15672 (http)
+    
+    Service                | Host      | Port
+    -----------------------|-----------|-------------    
+    Zookeeper              | zookeeper | 2181
+    Kafka                  | kafka     | 9092
+    RabbitMQ               | rabbitmq  | 5672 (amqp)
+    MongoDB                | mongo     | 27017
 
-- Zookeeper | 2181
-- Kafka | 9092
-- Kafka-UI | 8080
-- RabbitMQ Management UI | 15672
-- Flink (job manager) + UI | 8081
-- Flink (task manager)
+### Docker Image modificada do Apache Flink 1.20.0
+- https://hub.docker.com/r/fahadkalil/my-flink
 
-## Dentro do container 'flink-jobmanager'
+#### Dentro do container 'flink-jobmanager'
 
 - Python 3.11
 - pyflink 1.20.0
@@ -19,13 +26,13 @@
 
 ---
 
-## Uso
+## Primeiro uso (ou instalação limpa)
 
     git clone https://github.com/fahadkalil/bigdata_docker.git
     cd bigdata_docker
     docker-compose up -d --pull=always
 
-## Atualizando imagens e containers
-
+## Atualizar repositório (bigdata_docker) e images+containers do Docker
+    git pull
     docker compose up -d --pull=always
     
