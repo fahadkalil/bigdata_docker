@@ -11,12 +11,13 @@ WITH (
 CREATE TEMPORARY TABLE kafka_sink_01 (  
 `order_id` INT,
 `order_status` STRING
-) WITH ( 
-'connector' = 'kafka', 
-'topic' = 'orders', 
-'properties.bootstrap.servers' = 'kafka:9092', 
-'format' = 'json', 
-'scan.startup.mode' = 'earliest-offset' 
+) 
+WITH ( 
+  'connector' = 'kafka', 
+  'topic' = 'orders', 
+  'properties.bootstrap.servers' = 'kafka:9092', 
+  'format' = 'json', 
+  'scan.startup.mode' = 'earliest-offset' 
 ); 
 
 INSERT INTO kafka_sink_01
