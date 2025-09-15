@@ -12,6 +12,7 @@ RUN set -ex; \
   apt-get -y install netcat-traditional; \
   apt-get -y install iputils-ping; \
   apt-get -y install nano; \
+  apt-get -y install vim; \
   apt-get -y install less; \
   apt-get -y install gzip; \
   apt-get -y install zip unzip; \  
