@@ -21,7 +21,7 @@
 - Python 3.11
 - pyflink 1.20.0
 - kafkacat
-- Linux tools: nano / vim / less / gzip / zip / unzip / nc / ping
+- Linux tools: nano / vim / less / gzip / zip / unzip / nc / curl / wget / ping
 - JARs do Flink para: Connectors e Formats
 
 ---
