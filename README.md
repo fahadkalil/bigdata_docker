@@ -1,17 +1,21 @@
 # Multi Container Docker para Pipeline em Big Data
 
-    Web User Interface     | Host      | Port
-    -----------------------|-----------|-------------
-    Flink Dashboard UI     | localhost | 8081
-    Kafka-UI               | localhost | 8080  (http)
-    RabbitMQ Management UI | localhost | 15672 (http)
+    Web User Interface      | Host      | Port
+    ------------------------|-----------|---------
+    Flink Dashboard         | localhost | 8081
+    Mongo Express (mongodb) | localhost | 8082
+    Kafbat (Kafka)          | localhost | 8083    
+    pgAdmin (postgres)      | localhost | 8084        
+    Redis Insight (valkey)  | localhost | 5540
+    RabbitMQ Management     | localhost | 15672
     
     Service                | Host      | Port
-    -----------------------|-----------|-------------    
-    Zookeeper              | zookeeper | 2181
+    -----------------------|-----------|-------------        
     Kafka                  | kafka     | 9092
     RabbitMQ               | rabbitmq  | 5672 (amqp)
     MongoDB                | mongo     | 27017
+    Valkey (redis)         | valkey    | 6379
+    PostgreSQL             | postgres  | 5432
 
 ### Docker Image modificada do Apache Flink 1.20.0
 - https://hub.docker.com/r/fahadkalil/my-flink
