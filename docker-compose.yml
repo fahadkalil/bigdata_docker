@@ -182,16 +182,34 @@ services:
 
   postgres:
     image: postgres:17
-    container_name: postgres    
+    platform: linux/x86_64
+    container_name: postgres
+    hostname: postgres    
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
       POSTGRES_DB: bigdata
     ports:
-      - "5434:5432"
+      - 5434:5432
     volumes:
     - postgres_data:/var/lib/postgresql/data
-    restart: unless-stopped
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    depends_on:
+      - postgres
+    ports:
+      - 8084:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_CONFIG_SERVER_MODE: False
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: False    
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    restart: always
 
 volumes:
   rabbitmq_data:
@@ -200,3 +218,4 @@ volumes:
   valkey_data:
   redisinsight_data:
   postgres_data:
+  pgadmin_data:
