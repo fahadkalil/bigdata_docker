@@ -11,11 +11,11 @@
     
     Service                | Host      | Port
     -----------------------|-----------|-------------        
-    Kafka                  | kafka     | 9092
+    Kafka                  | kafka     | 9092 (tcp)
     RabbitMQ               | rabbitmq  | 5672 (amqp)
-    MongoDB                | mongo     | 27017
-    Valkey (redis)         | valkey    | 6379
-    PostgreSQL             | postgres  | 5432
+    MongoDB                | mongo     | 27017 (tcp)
+    Valkey (redis)         | valkey    | 6379 (tcp)
+    PostgreSQL             | postgres  | 5432 (tcp)
 
 ### Docker Image modificada do Apache Flink 1.20.0
 - https://hub.docker.com/r/fahadkalil/my-flink
