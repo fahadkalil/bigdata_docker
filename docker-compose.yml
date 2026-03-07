@@ -63,6 +63,7 @@ services:
       dockerfile: Dockerfile
     image: fahadkalil/my-flink
     container_name: flink-jobmanager
+    platform: linux/amd64
     ports:
       - 8081:8081
     environment:
@@ -74,6 +75,7 @@ services:
   flink-taskmanager:
     image: fahadkalil/my-flink
     container_name: flink-taskmanager
+    platform: linux/amd64
     depends_on:
       - flink-jobmanager
     command: taskmanager
@@ -142,7 +144,7 @@ services:
     restart: always
 
   postgres:
-    image: postgres:17
+    image: postgres:latest
     container_name: postgres
     hostname: postgres    
     environment:
