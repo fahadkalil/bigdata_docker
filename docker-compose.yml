@@ -144,7 +144,7 @@ services:
     restart: always
 
   postgres:
-    image: postgres:latest
+    image: postgres:17
     container_name: postgres
     hostname: postgres    
     environment:
