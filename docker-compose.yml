@@ -32,6 +32,38 @@ services:
       - kafka_secrets:/etc/kafka/secrets      
     restart: always
 
+  kafka-connect:
+    image: confluentinc/cp-kafka-connect:7.7.7
+    container_name: kafka-connect
+    hostname: kafka-connect
+    depends_on:
+      - kafka
+    ports:
+      - "8085:8085"
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: kafka:9092
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_REST_ADVERTISED_HOST_NAME: connect
+      CONNECT_GROUP_ID: compose-connect-group
+      CONNECT_CONFIG_STORAGE_TOPIC: docker-connect-configs
+      CONNECT_OFFSET_STORAGE_TOPIC: docker-connect-offsets
+      CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
+      CONNECT_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE: "false"
+      CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
+      CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
+
+    command: 
+      - "/bin/bash"
+      - "-c"
+      - |
+        # Instala o conector Debezium para Postgres
+        confluent-hub install --no-prompt debezium/debezium-connector-postgresql:latest
+        /etc/confluent/docker/run
+
   kafbat-ui:
     image: ghcr.io/kafbat/kafka-ui:latest
     container_name: kafbat-ui
@@ -42,6 +74,8 @@ services:
     environment:
       KAFKA_CLUSTERS_0_NAME: bigdata-kafka-cluster
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_NAME: debezium
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_ADDRESS: http://kafka-connect:8085
     restart: always
 
   rabbitmq:
@@ -160,6 +194,16 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"        # Enable logical replication
+      - "-c"
+      - "max_replication_slots=4"  # Allow multiple replication slots
+      - "-c"
+      - "max_wal_senders=4"        # Allow multiple replication connections
+      - "-c"
+      - "log_replication_commands=on"  
     restart: always
 
   pgadmin:
