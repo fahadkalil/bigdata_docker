@@ -38,8 +38,13 @@
     cd bigdata_docker
     docker compose up -d --pull=always
 
-## Atualizar repositório (bigdata_docker) e images+containers do Docker
+## Atualizar repositório git + containers do Docker
 
     git pull
-    docker compose up -d --pull=always
+    docker compose up -d --remove-orphans
+
+## ⚠️ Atualização completa: repositório git + imagens e containers do Docker
+
+    git pull
+    docker compose up -d --remove-orphans --pull=always
     
