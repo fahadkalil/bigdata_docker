@@ -1,4 +1,4 @@
-# Multi Container Docker para Pipeline em Big Data
+## Multi Container Docker para Pipeline em Big Data
 
     Web User Interface      | Host      | Port
     ------------------------|-----------|---------
@@ -18,11 +18,11 @@
     PostgreSQL             | postgres      | 5432  (tcp)
     Kafka Connect          | kafka-connect | 8083  (tcp)
 
-## Docker Image modificada do Apache Flink 1.20.0
+### Docker Image modificada do Apache Flink 1.20.0
 
 - [https://hub.docker.com/r/fahadkalil/my-flink](https://hub.docker.com/r/fahadkalil/my-flink)
 
-### Dentro do container 'flink-jobmanager'
+#### Dentro do container 'flink-jobmanager'
 
 - Python 3.11
 - pyflink 1.20.0
@@ -32,18 +32,18 @@
 
 ---
 
-## Primeiro uso (ou instalação limpa)
+### Primeiro uso (ou instalação limpa)
 
     git clone https://github.com/fahadkalil/bigdata_docker.git
     cd bigdata_docker
     docker compose up -d --pull=always
 
-## Atualizar repositório git + containers do Docker
+### Atualizar repositório git + containers do Docker
 
     git pull
     docker compose up -d --remove-orphans
 
-## ⚠️ Atualização completa: repositório git + imagens e containers do Docker
+### ⚠️ Atualização completa: repositório git + imagens e containers do Docker ⚠️
 
     git pull
     docker compose up -d --remove-orphans --pull=always
