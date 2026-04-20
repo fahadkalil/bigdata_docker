@@ -21,7 +21,7 @@ RUN set -ex; \
 # Install pyflink
 RUN set -ex; \
   python -m pip install --upgrade pip; \
-  pip install apache-flink==1.20.0
+  pip install apache-flink==1.20.0 redis
 
 WORKDIR /opt/flink
 COPY --chown=flink:flink ./connectors/*.jar ./lib
