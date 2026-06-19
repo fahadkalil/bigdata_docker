@@ -30,7 +30,6 @@ services:
     volumes:
       - kafka_data:/var/lib/kafka/data
       - kafka_secrets:/etc/kafka/secrets      
-    restart: always
     networks:
       - shared-network
       - default
@@ -88,8 +87,7 @@ services:
       KAFKA_CLUSTERS_0_NAME: bigdata-kafka-cluster
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
       KAFKA_CLUSTERS_0_KAFKACONNECT_0_NAME: debezium
-      KAFKA_CLUSTERS_0_KAFKACONNECT_0_ADDRESS: http://kafka-connect:8083
-    restart: always
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_ADDRESS: http://kafka-connect:8083    
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -102,7 +100,6 @@ services:
       RABBITMQ_DEFAULT_PASS: rabbit    
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
-    restart: always
 
   flink-jobmanager:
     build:
@@ -153,7 +150,6 @@ services:
   mongo-express:
     image: mongo-express
     container_name: mongo-express-ui
-    restart: always
     depends_on:
       - mongo
     ports:
@@ -173,7 +169,6 @@ services:
       - 6379:6379
     volumes:      
       - valkey_data:/data
-    restart: always
 
   redisinsight:
     image: redis/redisinsight:latest
@@ -187,8 +182,7 @@ services:
       RI_REDIS_PORT: 6379
       RI_REDIS_ALIAS: LocalConnection
     volumes:      
-      - redisinsight_data:/data/db    
-    restart: always
+      - redisinsight_data:/data/db
 
   postgres:
     image: postgres:17
@@ -216,8 +210,7 @@ services:
       - "-c"
       - "max_wal_senders=4"        # Allow multiple replication connections
       - "-c"
-      - "log_replication_commands=on"  
-    restart: always
+      - "log_replication_commands=on"
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -240,7 +233,6 @@ services:
       retries: 3
     volumes:
       - pgadmin_data:/var/lib/pgadmin
-    restart: always
 
 volumes:
   kafka_data:
