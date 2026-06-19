@@ -30,10 +30,7 @@ services:
     volumes:
       - kafka_data:/var/lib/kafka/data
       - kafka_secrets:/etc/kafka/secrets      
-    networks:
-      - shared-network
-      - default
-
+   
   kafka-connect:
     image: confluentinc/cp-kafka-connect:7.7.7
     container_name: kafka-connect
@@ -244,7 +241,3 @@ volumes:
   redisinsight_data:
   postgres_data:
   pgadmin_data:
-
-networks:
-  shared-network:
-    external: true
